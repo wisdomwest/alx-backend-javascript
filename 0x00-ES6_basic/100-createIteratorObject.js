@@ -5,4 +5,3 @@ export default function createIteratorObject(report) {
   }
   return employees;
 }
-
