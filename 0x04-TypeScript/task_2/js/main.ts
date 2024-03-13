@@ -43,7 +43,7 @@ export function createEmployee(salary: (number | string)): (Director | Teacher) 
     return new Teacher();
   }
   return new Director();
-}
+} 
 
 export function isDirector(employee: (Director | Teacher)) {
   return employee instanceof Director;
@@ -55,4 +55,13 @@ export function executeWork(employee: (Director | Teacher)) {
   } else {
     console.log(employee.workTeacherTasks());
   }
+}
+
+export type Subjects = ('Math' | 'History');
+
+export function teachClass(todayClass: Subjects) {
+  if (todayClass === 'Math') {
+    return 'Teaching Math';
+  }
+  return 'Teaching History';
 }
