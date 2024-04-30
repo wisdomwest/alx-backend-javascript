@@ -52,11 +52,11 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
 
 app.get('/students', async (req, res) => {
   countStudents(dataPath)
-  .then((data) => res.send(`This is the list of our students\n${data}`))
-  .catch((error) => res.send(`This is the list of our students\n${error.message}`));
+    .then((data) => res.send(`This is the list of our students\n${data}`))
+    .catch((error) => res.send(`This is the list of our students\n${error.message}`));
 });
 
-app.listen(PORT, HOST , () => {
+app.listen(PORT, HOST, () => {
   console.log(`Server running at http://${HOST}:${PORT}`);
 });
 
