@@ -6,13 +6,11 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
       reject(Error('Cannot load the database'));
       return;
     }
-
-    let response = '';
-
+    
     const lines = data.split('\n').filter((line) => line !== '').slice(1);
     const students = lines.map((line) => line.split(','));
 
-    response += `Number of students: ${students.length}`;
+    console.log(`Number of students: ${students.length}`);
 
     const fields = {};
 
@@ -32,7 +30,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
         const names = fields[field].join(', ');
         const count = fields[field].length;
 
-        response += `\nNumber of students in ${field}: ${count}. List: ${names}`;
+        console.log(`Number of students in ${field}: ${count}. List: ${names}`);
       }
     }
 
