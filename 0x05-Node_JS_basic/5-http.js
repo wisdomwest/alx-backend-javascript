@@ -19,7 +19,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
 
     response += `Number of students: ${students.length}`;
 
-    const fields = {}; // Corrected variable name
+    const fields = {};
 
     students.forEach((student) => {
       const firstName = student[0];
