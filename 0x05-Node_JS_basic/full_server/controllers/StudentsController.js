@@ -7,27 +7,21 @@ class StudentsController {
   static getAllStudents(request, response) {
     readDatabase(dataPath)
       .then((fields) => {
-        let responseText = '';
+        let responseText = 'This is the list of our students';
 
-        const arrange = (a, b) => {
-          if (a[0].toLowerCase() < b[0].toLowerCase()) return -1;
-          if (a[0].toLowerCase() > b[0].toLowerCase()) return 1;
-          return 0;
-        };
+        const students = Object.keys(fields).sort();
+        students.forEach((student) => {
+          const count = fields[student].length;
+          const name = fields[student].join(', ');
 
-        for (const field in fields) {
-          if (Object.hasOwnProperty.call(fields, field)) {
-            const sortedNames = fields[field].sort(arrange);
-            const names = sortedNames.join(', ');
-            const count = sortedNames.length;
+          responseText += `\nNumber of students in ${student}: ${count}. List: ${name}`;
+        });
 
-            responseText += `\nNumber of students in ${field}: ${count}. List: ${names}`;
-      }
-    }
-
-    response.status(200).send(`This is the list of our students\n${responseText}`);
-    })
-    .catch((error) => response.status(500).send(`This is the list of our students\n${error.message}`));
+        response.status(200).send(responseText);
+      })
+      .catch(() => {
+        response.status(500).send('Cannot load the database');
+      });
   }
 
   static getAllStudentsByMajor(request, response) {
