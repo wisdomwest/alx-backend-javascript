@@ -42,11 +42,10 @@ class StudentsController {
       .then((fields) => {
         const students = fields[major];
         const names = students.join(', ');
-        const count = students.length;
 
         response.status(200).send(`List: ${names}`);
       })
-      .catch((error) => response.status(500).send(`List: ${error.message}`));
+      .catch((error) => response.status(500).send('cannot load the database'));
 
   }
 }
