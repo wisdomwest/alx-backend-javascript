@@ -1,4 +1,4 @@
-import readDatabase from "../utils";
+import readDatabase from '../utils';
 
 const MAJORS = ['CS', 'SWE'];
 const dataPath = process.argv[2];
@@ -40,7 +40,6 @@ class StudentsController {
         response.status(200).send(`List: ${names}`);
       })
       .catch(() => response.status(500).send('Cannot load the database'));
-
   }
 }
 
