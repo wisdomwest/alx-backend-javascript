@@ -72,7 +72,7 @@ const server = [
           res.write(Buffer.from(resposneData));
         })
         .catch((error) => {
-          data.push(error.message);
+          data.push(error instanceof Error ? error.message : error.toString());
           const resposneData = data.join('\n');
           res.setHeader('Content-Type', 'text/plain');
           res.setHeader('Content-Length', data.length);
@@ -85,7 +85,7 @@ const server = [
 
 app.on('request', (req, res) => {
   for (const routes of server) {
-    if (req.url === routes.route) {
+    if (routes.route === req.url) {
       routes.handler(req, res);
       break;
     }
