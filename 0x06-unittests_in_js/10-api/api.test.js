@@ -30,7 +30,7 @@ describe('API test', () => {
   it('GET /available_payments', (done) => {
     request(`${URL}/available_payments`, (error, response, body) => {
       expect(response.statusCode).to.equal(200);
-      expect(body).to.equal('{"payment_methods":{"credit_cards":true,"paypal":false}}');
+      expect(JSON.parse(body)).to.eql({ payment_methods: { credit_cards: true, paypal: false } });
       done();
     });
   });
@@ -43,3 +43,4 @@ describe('API test', () => {
     });
   });
 });
+
