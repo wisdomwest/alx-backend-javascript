@@ -35,10 +35,10 @@ describe('API test', () => {
     });
   });
 
-  it('POST /login?username=angie', (done) => {
-    request.post(`${URL}/login?username=angie`, (error, response, body) => {
+  if ('POST /login', (done) => {
+    request.post(`${URL}/login`, { json: { userName: 'Betty' } }, (error, response, body) => {
       expect(response.statusCode).to.equal(200);
-      expect(body).to.equal('Welcome angie');
+      expect(body).to.equal('Welcome Betty');
       done();
     });
   });
